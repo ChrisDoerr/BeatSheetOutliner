@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beat Sheet Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow">Story planning dashboard</p>
+          <h1>Beat Sheet Calculator</h1>
+        </div>
+        <div class="header-actions">
+          <button id="export-button" type="button" class="secondary-button">Export JSON</button>
+          <button id="import-button" type="button" class="secondary-button">Import JSON</button>
+          <button id="reset-button" type="button" class="secondary-button">Reset defaults</button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <aside class="panel controls-panel">
+          <h2>Story settings</h2>
+
+          <div class="field-grid">
+            <label>
+              <span>Title</span>
+              <input id="story-title" type="text" value="My Story" placeholder="Enter story title" />
+            </label>
+
+            <label>
+              <span>Total pages</span>
+              <input id="total-pages" type="number" min="1" step="1" value="450" />
+            </label>
+
+            <label>
+              <span>Words per page</span>
+              <input id="words-per-page" type="number" min="1" step="10" value="250" />
+            </label>
+
+            <label>
+              <span>Average pages per scene</span>
+              <input id="pages-per-scene" type="number" min="1" step="0.5" value="5" />
+            </label>
+          </div>
+
+          <div class="summary-grid" aria-live="polite">
+            <div class="summary-card">
+              <span>Total words</span>
+              <strong id="total-words">112,500</strong>
+            </div>
+            <div class="summary-card">
+              <span>Estimated scenes</span>
+              <strong id="total-scenes">96</strong>
+            </div>
+            <div class="summary-card">
+              <span>Avg. scene length</span>
+              <strong id="scene-length-summary">5 pages</strong>
+            </div>
+          </div>
+        </aside>
+
+        <section class="panel table-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-tag">Blake Snyder structure</p>
+              <h2>Beat map</h2>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>%</th>
+                  <th>Beat</th>
+                  <th>Page range</th>
+                  <th>Scenes</th>
+                  <th>Words</th>
+                </tr>
+              </thead>
+              <tbody id="beat-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel planning-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-tag">Story dashboard</p>
+              <h2>Scene planner</h2>
+            </div>
+          </div>
+          <div id="beat-plan-list" class="beat-plan-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <input id="import-file" type="file" accept="application/json,.json" hidden />
+    <script src="app.js"></script>
+  </body>
+</html>
