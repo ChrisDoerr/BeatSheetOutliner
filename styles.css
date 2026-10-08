@@ -9,6 +9,33 @@
   --accent-soft: #ebf4f8;
   --danger: #a74242;
   --shadow: rgba(17, 24, 39, 0.08);
+  --page-gradient: linear-gradient(180deg, #f3efeb 0%, #ece8e3 100%);
+  --button-hover: #f1ece5;
+  --card-gradient: linear-gradient(180deg, #fff 0%, #f9f5f1 100%);
+  --row-hover: rgba(47, 111, 143, 0.04);
+  --scene-background: rgba(47, 111, 143, 0.02);
+  --accent-border: rgba(47, 111, 143, 0.2);
+  --focus-ring: rgba(47, 111, 143, 0.2);
+}
+
+body[data-theme="dark"] {
+  --bg: #171a1d;
+  --panel: #22272b;
+  --panel-alt: #2b3237;
+  --border: #465158;
+  --text: #edf1f3;
+  --muted: #b1bdc4;
+  --accent: #79c5e7;
+  --accent-soft: #293f49;
+  --danger: #f08b8b;
+  --shadow: rgba(0, 0, 0, 0.28);
+  --page-gradient: linear-gradient(180deg, #171a1d 0%, #20262a 100%);
+  --button-hover: #39434a;
+  --card-gradient: linear-gradient(180deg, #292f33 0%, #242a2e 100%);
+  --row-hover: rgba(121, 197, 231, 0.08);
+  --scene-background: rgba(121, 197, 231, 0.04);
+  --accent-border: rgba(121, 197, 231, 0.25);
+  --focus-ring: rgba(121, 197, 231, 0.35);
 }
 
 * {
@@ -18,7 +45,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(180deg, #f3efeb 0%, #ece8e3 100%);
+  background: var(--page-gradient);
   color: var(--text);
 }
 
@@ -120,7 +147,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  outline: 2px solid rgba(47, 111, 143, 0.2);
+  outline: 2px solid var(--focus-ring);
   border-color: var(--accent);
 }
 
@@ -136,7 +163,7 @@ textarea:focus {
   flex-direction: column;
   gap: 0.35rem;
   background: var(--accent-soft);
-  border: 1px solid rgba(47, 111, 143, 0.2);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
   padding: 0.8rem;
 }
@@ -192,7 +219,7 @@ th {
 }
 
 tbody tr:hover {
-  background: rgba(47, 111, 143, 0.04);
+  background: var(--row-hover);
 }
 
 .beat-label {
@@ -233,7 +260,13 @@ tbody tr:hover {
 
 .secondary-button:hover,
 .mini-button:hover {
-  background: #f1ece5;
+  background: var(--button-hover);
+}
+
+.theme-button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .secondary-button.compact {
@@ -267,7 +300,7 @@ tbody tr:hover {
 }
 
 .beat-plan-card {
-  background: linear-gradient(180deg, #fff 0%, #f9f5f1 100%);
+  background: var(--card-gradient);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 0.9rem;
@@ -325,7 +358,7 @@ tbody tr:hover {
   padding: 0.55rem;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: rgba(47, 111, 143, 0.02);
+  background: var(--scene-background);
 }
 
 .scene-item label {

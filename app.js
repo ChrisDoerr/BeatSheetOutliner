@@ -104,6 +104,8 @@ const resetButton = document.querySelector('#reset-button');
 const exportButton = document.querySelector('#export-button');
 const importButton = document.querySelector('#import-button');
 const importFileInput = document.querySelector('#import-file');
+const lightModeButton = document.querySelector('#light-mode-button');
+const darkModeButton = document.querySelector('#dark-mode-button');
 
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -406,6 +408,12 @@ function resetDefaults() {
   render();
 }
 
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  lightModeButton.setAttribute('aria-pressed', String(theme === 'light'));
+  darkModeButton.setAttribute('aria-pressed', String(theme === 'dark'));
+}
+
 storyTitleInput.addEventListener('input', updateStateFromInputs);
 totalPagesInput.addEventListener('input', updateStateFromInputs);
 wordsPerPageInput.addEventListener('input', updateStateFromInputs);
@@ -414,6 +422,8 @@ resetButton.addEventListener('click', resetDefaults);
 exportButton.addEventListener('click', exportStateToJson);
 importButton.addEventListener('click', () => importFileInput.click());
 importFileInput.addEventListener('change', importStateFromFile);
+lightModeButton.addEventListener('click', () => setTheme('light'));
+darkModeButton.addEventListener('click', () => setTheme('dark'));
 
 beatPlanList.addEventListener('input', (event) => {
   const target = event.target;
