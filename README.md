@@ -11,3 +11,4 @@ In other words: just because a particular beat is “supposed” to happen at a 
 Think of the beat sheet as a **map, not a railroad track**. It can help you see where you are, what might be missing, and where the story could go next — but it should never dictate the journey.
 
 This tool is simply an outlining aid for writers who find this kind of structure useful. If you work well with beats and story frameworks, hopefully it helps you think through your story. If you don't, that's perfectly fine too.
+"# BeatSheetOutliner" 
