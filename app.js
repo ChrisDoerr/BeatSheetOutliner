@@ -29,6 +29,7 @@ function createScene(beatId, text = '') {
     id: generateSceneId(),
     beatId,
     text,
+    track_nr: 1,
   };
 }
 
@@ -67,6 +68,9 @@ function normalizeState(rawState) {
           id: scene && scene.id ? scene.id : generateSceneId(),
           beatId: definition.id,
           text: scene && typeof scene.text === 'string' ? scene.text : '',
+          track_nr: Number.isInteger(scene && scene.track_nr) && scene.track_nr > 0
+            ? scene.track_nr
+            : 1,
         }))
       : [createScene(definition.id)];
 
@@ -239,6 +243,19 @@ function renderPlanCards(rows) {
               data-beat-id="${row.id}"
             />
           </label>
+          <label>
+            <span>Track number</span>
+            <input
+              class="scene-track-number"
+              type="number"
+              min="1"
+              step="1"
+              value="${scene.track_nr}"
+              data-role="scene-track-nr"
+              data-scene-id="${scene.id}"
+              data-beat-id="${row.id}"
+            />
+          </label>
           <button
             type="button"
             class="mini-button danger"
@@ -351,6 +368,17 @@ function updateSceneText(beatId, sceneId, value) {
   render();
 }
 
+function updateSceneTrackNumber(beatId, sceneId, value) {
+  const beat = findBeatById(beatId);
+  if (!beat) return;
+  const scene = beat.scenes.find((item) => item.id === sceneId);
+  if (!scene) return;
+  const trackNumber = Number(value);
+  scene.track_nr = Number.isInteger(trackNumber) && trackNumber > 0 ? trackNumber : 1;
+  saveState();
+  render();
+}
+
 function addSceneToBeat(beatId) {
   const beat = findBeatById(beatId);
   if (!beat) return;
@@ -435,6 +463,13 @@ beatPlanList.addEventListener('input', (event) => {
 
   if (target.dataset.role === 'scene-text') {
     updateSceneText(beatId, target.dataset.sceneId, target.value);
+  }
+});
+
+beatPlanList.addEventListener('change', (event) => {
+  const target = event.target;
+  if (target.dataset.role === 'scene-track-nr') {
+    updateSceneTrackNumber(target.dataset.beatId, target.dataset.sceneId, target.value);
   }
 });
 

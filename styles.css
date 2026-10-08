@@ -373,6 +373,12 @@ tbody tr:hover {
   letter-spacing: 0.08em;
 }
 
+.scene-item .scene-track-number {
+  min-height: auto;
+  width: 4.5rem;
+  padding: 0.45rem 0.55rem;
+}
+
 .empty-state {
   margin: 0;
   color: var(--muted);
