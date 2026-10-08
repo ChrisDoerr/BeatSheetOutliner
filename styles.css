@@ -194,7 +194,7 @@ textarea:focus {
 }
 
 .table-wrapper {
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 table {
