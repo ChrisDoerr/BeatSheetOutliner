@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'beat-sheet-calculator-state';
+const STORAGE_KEY = 'beat-sheet-outliner-state';
 
 const defaultBeatDefinitions = [
   { id: 'opening-image', label: 'Opening Image', percent: 0, description: 'An image of the ordinary world that establishes the protagonist’s reality and emotional state.' },
@@ -392,7 +392,7 @@ function importStateFromFile(event) {
       saveState();
       render();
     } catch (error) {
-      alert('This JSON file could not be imported. Please choose a valid Beat Sheet Calculator export.');
+      alert('This JSON file could not be imported. Please choose a valid Beat Sheet Outliner export.');
     } finally {
       importFileInput.value = '';
     }
